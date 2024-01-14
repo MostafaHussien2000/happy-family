@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yo !</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jolly+Lodger&display=swap" rel="stylesheet">
+    <link rel="icon" href="./assets/icon.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Jolly+Lodger&display=swap');
+
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: #DBD8C4;
+            font-family: 'Jolly Lodger', cursive, system-ui;
+            max-height: 100vh;
+            overflow: hidden;
+        }
+        h1{
+            text-align: center;
+            font-size: 90px;
+            margin: 20px 0px 10px;
+        }
+        button{
+            font-size: 20px;
+            font-family: 'Jolly Lodger', cursive, system-ui;
+            min-width: 90px;
+            border-radius: 0px;
+            border: none;
+            padding: 5px 5px;
+            background: #B8BB2C;
+            margin: 25px 0px 10px;
+            cursor: pointer;
+            animation-name: animateButton;
+            animation-duration: 0.2s;
+            animation-delay: 4s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+        p{
+            animation-name: animateButton;
+            animation-duration: 0.2s;
+            animation-delay: 4.3s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+        img {
+            width: 270px;
+            position: absolute;
+            bottom: 0px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+        }
+        h3{
+            animation-name: animateH3;
+            animation-duration: 0.2s;
+            animation-delay: 3s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes animateH3 {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes animateButton {
+            0% {
+                opacity: 0;
+                pointer-events: none;
+            }
+            100% {
+                opacity: 1;
+                pointer-events: all;
+            }
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Hello,</h1>
+        <h3>Come on, don't be rude. Say Hi !!</h3>
+        <a href="./view2.html"><button>Hi ...</button></a>
+        <p>Click Hi. It doesn't bite !</p>
+        <img src="./assets/1.png" alt="shrek hi">
+
+    </center>
+</body>
+</html>

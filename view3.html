@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yo !</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jolly+Lodger&display=swap" rel="stylesheet">
+    <link rel="icon" href="./assets/icon.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Jolly+Lodger&display=swap');
+
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: #DBD8C4;
+            font-family: 'Jolly Lodger', cursive, system-ui;
+            max-height: 100vh;
+            overflow: hidden;
+        }
+        h1{
+            text-align: center;
+            font-size: 50px;
+            margin: 50px 0px 10px;
+            max-width: 350px;
+        }
+        button{
+            font-size: 20px;
+            font-family: 'Jolly Lodger', cursive, system-ui;
+            min-width: 90px;
+            border-radius: 0px;
+            border: none;
+            padding: 5px 5px;
+            background: #B8BB2C;
+            margin: 25px 0px 10px;
+            cursor: pointer;
+        }
+        img:not(.floating-img) {
+            width: 250px;
+            position: absolute;
+            bottom: 0px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+        }
+        .btn-group{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        img.floating-img {
+            width: 50px;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            pointer-events: none;
+            opacity: 0;
+        }
+        
+
+        @keyframes animateH3 {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes animateButton {
+            0% {
+                opacity: 0;
+                pointer-events: none;
+            }
+            100% {
+                opacity: 1;
+                pointer-events: all;
+            }
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Wanna marry me ?</h1>
+        <div class="btn-group">
+            <div class="btn btn1">
+                <a href="./view4.html">
+                    <button id="response-yes">Of course!</button>
+                </a>
+                <img src="./assets/happy.png" alt="" class="floating-img">
+            </div>
+            <div class="btn btn2">
+                <button id="response-no">Not so fast</button>
+                <img src="./assets/sad.png" alt="" class="floating-img">
+            </div>
+        </div>
+
+        <img src="./assets/3.png" alt="shrek in love">
+
+    </center>
+
+    <script>
+        const responseYes = document.getElementById("response-yes")
+        const responseNo = document.getElementById("response-no")
+        const parentOne = document.querySelector(".btn1")
+        const parentTwo = document.querySelector(".btn2")
+
+        responseYes.addEventListener("mousemove", (e) => showEmotion(e))
+        responseYes.addEventListener("mouseleave", hideEmotions)
+
+        responseNo.addEventListener("mousemove", (e) => showEmotion(e))
+        responseNo.addEventListener("mouseleave", hideEmotions)
+        responseNo.addEventListener("click", clickNo)
+
+        // get mouse position
+        function getMousePos(e) {
+            return {
+                x: e.pageX,
+                y: e.pageY
+            }
+        }
+        function showEmotion(event) {
+            // make image move based on the mouse position within its parent
+            const mousePos = getMousePos(event)
+            const parent = event.target.closest(".btn");
+            parent.children[1].style.opacity = 1
+            parent.children[1].style.top = mousePos.y + "px"
+            parent.children[1].style.left = mousePos.x - 10 + "px"
+        }
+        function hideEmotions() {
+            const parent = event.target.closest(".btn");
+            parent.children[1].style.opacity = 0
+        }
+        function clickNo(e) {
+            const btn = e.target;
+            btn.style.pointerEvents = "none"
+            btn.removeEventListener("mousemove", (e) => showEmotion(e))
+            btn.removeEventListener("mouseleave", hideEmotions)
+            btn.style.background = "transparent"
+            btn.innerText = "🙂"
+            const parent = btn.closest(".btn");
+            parent.children[1].style.opacity = 0
+            console.log(parent.children[1])
+        }
+
+    </script>
+</body>
+</html>
